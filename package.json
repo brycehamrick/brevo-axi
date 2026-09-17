@@ -1,0 +1,51 @@
+{
+  "name": "brevo-axi",
+  "version": "0.1.0",
+  "description": "AXI-compliant CLI for Brevo - send and audit transactional email and SMS, manage marketing campaigns, contacts, lists, CRM deals, senders, and webhooks over the Brevo v3 REST API.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Bryce Hamrick",
+  "keywords": [
+    "axi",
+    "brevo",
+    "sendinblue",
+    "cli",
+    "agent",
+    "email",
+    "sms",
+    "marketing",
+    "crm",
+    "toon"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brycehamrick/brevo-axi.git"
+  },
+  "bin": {
+    "brevo-axi": "bin/brevo-axi.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "skills",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "dependencies": {
+    "axi-sdk-js": "^0.1.11"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
