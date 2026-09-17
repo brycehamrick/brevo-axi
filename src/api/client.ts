@@ -57,7 +57,9 @@ export function createBrevoClient(
     opts: RequestOptions = {},
   ): Promise<Record<string, unknown> | null> {
     const cleanPath = path.startsWith("/") ? path.slice(1) : path;
-    if (!/^[a-zA-Z0-9/_{}.-]*\/?$/.test(cleanPath) || cleanPath.includes("..")) {
+    // Command code URL-encodes dynamic segments (emails, names), so percent
+    // escapes are expected; traversal is blocked separately.
+    if (!/^[a-zA-Z0-9/_{}.%-]*\/?$/.test(cleanPath) || cleanPath.includes("..")) {
       throw new AxiError(`invalid API path: ${path}`, "VALIDATION_ERROR");
     }
     const base = config.apiUrl.endsWith("/") ? config.apiUrl : `${config.apiUrl}/`;
